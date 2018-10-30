@@ -1,0 +1,59 @@
+{
+  "name": "hapi-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "entity:create": "ts-node ./node_modules/typeorm/cli.js entity:create -d src/entities -n",
+    "migrate": "ts-node ./node_modules/typeorm/cli.js migration:run -c development",
+    "migrate:generate": "ts-node ./node_modules/typeorm/cli.js migration:generate -c development -n",
+    "migrate:revert": "ts-node ./node_modules/typeorm/cli.js migration:revert -c development",
+    "migrate:seed": "ts-node ./node_modules/typeorm-seeding/dist/cli.js",
+    "start": "tsc && node dist/",
+    "start:dev": "rm -rf dist && tsc && nodemon dist/",
+    "watch": "tsc -w"
+  },
+  "engines": {
+    "node": ">=8.11.3"
+  },
+  "author": {
+    "name": "Arith Alexis Villalba Bravo",
+    "email": "arithalexis@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "blipp": "^3.0.0",
+    "boom": "^7.2.0",
+    "commander": "^2.18.0",
+    "faker": "^4.1.0",
+    "glue": "^5.0.0",
+    "hapi": "^17.5.4",
+    "hapi-acl-auth": "^1.0.5",
+    "hapi-auth-jwt2": "^8.1.0",
+    "hapi-decorators": "^1.0.0",
+    "hapi-swagger": "^9.1.1",
+    "inert": "^5.1.0",
+    "joi": "^13.6.0",
+    "laabr": "^4.0.2",
+    "mysql2": "^1.6.1",
+    "nodemon": "^1.18.5",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "^0.2.7",
+    "typeorm-seeding": "0.0.1",
+    "vision": "^5.4.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^2.0.0",
+    "@types/commander": "^2.12.2",
+    "@types/dotenv": "^4.0.3",
+    "@types/faker": "^4.1.4",
+    "@types/hapi": "^17.0.19",
+    "@types/hapi-decorators": "^0.4.10",
+    "@types/joi": "^13.4.4",
+    "@types/jsonwebtoken": "^7.2.8",
+    "ngrok": "^3.0.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
+  }
+}

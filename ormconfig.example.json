@@ -1,0 +1,36 @@
+[
+  {
+    "name": "production",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "database_user",
+    "password": "",
+    "database": "database_name",
+    "entities": ["src/entity/**/*.ts"],
+    "migrations": ["src/database/migration/**/*.ts"],
+    "subscribers": ["src/database/subscriber/**/*.ts"],
+    "cli": {
+      "entitiesDir": ["src/entity"],
+      "migrationsDir": "src/database/migration",
+      "subscribersDir": "src/database/subscriber"
+    }
+  },
+  {
+    "name": "development",
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "database_user",
+    "password": "",
+    "database": "database_name",
+    "entities": ["src/entity/**/*.ts"],
+    "migrations": ["src/database/migration/**/*.ts"],
+    "subscribers": ["src/database/subscriber/**/*.ts"],
+    "cli": {
+      "entitiesDir": ["src/entity"],
+      "migrationsDir": "src/database/migration",
+      "subscribersDir": "src/database/subscriber"
+    }
+  }
+]
