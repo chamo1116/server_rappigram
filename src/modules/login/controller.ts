@@ -1,3 +1,5 @@
+import {  Inject } from "typescript-ioc";
+
 import { notFound } from "boom";
 import { Request, ResponseToolkit, ServerRoute } from "hapi";
 import { Controller, controller, options, post } from "hapi-decorators";
@@ -12,6 +14,9 @@ import UserService from "../../services/UserService";
 export default class Login implements Controller {
   baseUrl: string;
   routes: () => ServerRoute[];
+
+  @Inject
+  private us: UserService;
 
   @options({
     auth: false,
@@ -39,9 +44,8 @@ export default class Login implements Controller {
   @post("/login")
   async signin(request: Request, h: ResponseToolkit) {
     const { username, password } = Utilities.toJSON(request.payload);
-    let us = new UserService();
     try {
-      const user = await us.login(username, password);
+      const user = await this.us.login(username, password);
 
       if (!user) return notFound("Usuario Y/O password incorrectos!");
 

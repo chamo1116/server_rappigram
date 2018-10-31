@@ -1,8 +1,12 @@
+import {  Singleton } from "typescript-ioc";
+
 import { User } from "../entities/User";
 import Utilities from "../helpers/Utilities";
+
 import { DatabaseProvider } from "../config/Database";
 import { DeleteResult, UpdateResult } from "typeorm";
 
+@Singleton
 export default class UserRepository {
   async insert(user: User): Promise<User> {
     try {

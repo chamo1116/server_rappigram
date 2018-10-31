@@ -1,12 +1,13 @@
+import { Singleton, Inject } from "typescript-ioc";
+
 import { User } from "../entities/User";
+
 import UserRepository from "../repositories/UserRepository";
 
+@Singleton
 export default class UserService {
+  @Inject
   private ur: UserRepository;
-
-  constructor() {
-    this.ur = new UserRepository();
-  }
 
   async create(_user: User): Promise<User> {
     try {

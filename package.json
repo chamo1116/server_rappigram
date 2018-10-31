@@ -41,6 +41,7 @@
     "reflect-metadata": "^0.1.12",
     "typeorm": "^0.2.7",
     "typeorm-seeding": "0.0.1",
+    "typescript-ioc": "^1.2.4",
     "vision": "^5.4.0"
   },
   "devDependencies": {
