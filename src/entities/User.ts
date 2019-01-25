@@ -12,7 +12,7 @@ import {
   CreateDateColumn
 } from "typeorm";
 
-import { Role } from "./Role";
+import { Accounts } from "./Account";
 
 @Entity({
   name: "users"
@@ -20,15 +20,6 @@ import { Role } from "./Role";
 export class User {
   @PrimaryGeneratedColumn("increment", { name: "id", type: "int" })
   id: number;
-
-  @Column({
-    name: "username",
-    type: "nvarchar",
-    length: 50,
-    unique: true,
-    nullable: true
-  })
-  username: string;
 
   @Column({
     name: "email",
@@ -48,9 +39,9 @@ export class User {
   })
   password: string;
 
-  @ManyToOne(type => Role, role => role.users)
-  @JoinColumn({ name: "role_id" })
-  role: Role;
+  @ManyToOne(type => Accounts, role => Accounts.users)
+  @JoinColumn({ name: "account_id" })
+  account: Account;
 
   @CreateDateColumn({
     name: "created_at",

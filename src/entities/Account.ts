@@ -2,20 +2,17 @@ import {
   Column,
   Entity,
   JoinTable,
-  OneToMany,
-  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
   CreateDateColumn,
 } from "typeorm";
 
 import { User } from "./User";
-import { Permission } from "./Permission";
 
 @Entity({
-  name: "roles"
+  name: "accounts"
 })
-export class Role {
+export class Accounts{
   @PrimaryGeneratedColumn("increment", { name: "id", type: "int" })
   id: number;
 
@@ -28,28 +25,41 @@ export class Role {
   name: string;
 
   @Column({
-    name: "description",
+    name: "password",
     type: "nvarchar",
-    length: 100
+    length: 100,
+    nullable: false,
+    select: false
   })
-  description: string;
+  password: string;
 
-  @OneToMany(type => User, user => user.role)
-  users: User[];
-
-  @ManyToMany(type => Permission)
-  @JoinTable({
-    name: "roles_has_permissions",
-    joinColumn: {
-      name: "role_id",
-      referencedColumnName: "id"
-    },
-    inverseJoinColumn: {
-      name: "permission_id",
-      referencedColumnName: "id"
-    }
+  @Column({
+    name: "relatedaccounts",
+    type: "nvarchar",
+    length: 100,
+    nullable: false
   })
-  permissions: Permission[];
+  relatedaccounts: string[];
+
+  @Column({
+    name: "relatedhashtags",
+    type: "nvarchar",
+    length: 100,
+    nullable: false
+  })
+  relatedhashtags: string[];
+
+  @Column({
+    name: "start_date",
+    type: "datetime",
+  })
+  start_date: Date;
+
+  @Column({
+    name: "paid_days",
+    type: "int",
+  })
+  end_date: number;
 
   @CreateDateColumn({
     name: "created_at",
@@ -65,3 +75,5 @@ export class Role {
   })
   updatedAt: Date;
 }
+
+
