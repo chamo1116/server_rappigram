@@ -15,7 +15,7 @@ export default {
     jwt: {
       type: "apiKey",
       name: "Authorization",
-      description: 'Token para autorizar las peticiones a la API',
+      description: 'Token for auth for API',
       in: "header"
     }
   },
